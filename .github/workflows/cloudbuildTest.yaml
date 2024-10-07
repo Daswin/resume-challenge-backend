@@ -1,9 +1,9 @@
 steps:
   - name: Terraform Init
-  - run: terraform init  
+    args: ['terraform init']
     
   - name: Terraform Plan
-    args: terraform plan -out=tfplan
+    args: ['terraform plan -out=tfplan']
 
   - name: Terraform Apply
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
