@@ -1,8 +1,8 @@
 steps:
-  - name: 'Terraform Init'
+  - name: 'hashicorp/terraform:1.0.0'
     args: ['terraform init']
     
-  - name: 'Terraform Plan'
+  - name: 'hashicorp/terraform:1.0.0'
     args: ['terraform plan -out=tfplan']
 
   
