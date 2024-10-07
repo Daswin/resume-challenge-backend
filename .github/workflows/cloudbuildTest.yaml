@@ -1,6 +1,9 @@
 steps:
   - name: Terraform Init
-    args: terraform init  
+    args:
+    - 'c'
+    - |
+        terraform init  
     
   - name: Terraform Plan
     args: terraform plan -out=tfplan
