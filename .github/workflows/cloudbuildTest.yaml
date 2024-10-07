@@ -1,6 +1,5 @@
 steps:
-  - name: 'hashicorp/terraform:1.0.0'
-    entrypoint: 'sh'
+  - name: 'hashicorp/terraform:1.0.0'    
     args: ['terraform init']
 
   
