@@ -1,8 +1,9 @@
 steps:
-  - name: 'hashicorp/terraform:1.0.0'
-    args: ['terraform init']
+  - name: Set up Terraform
+    uses: hashicorp/setup-terraform@v2
     
-  - name: 'hashicorp/terraform:1.0.0'
-    args: ['terraform plan']
+  - name: Terraform Init
+    working-directory: ./terraform
+    run: terraform init
 
   
