@@ -1,20 +1,10 @@
-name: Terraform CI/CD
+steps:
+  - name: Terraform Init
+    run: terraform init  
+    
+  - name: Terraform Plan
+    run: terraform plan -out=tfplan
 
-on:
-  push:
-    branches:
-      - master
-jobs:
-  terraform_apply:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Terraform Init
-        run: terraform init  
-        
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-  
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan
+  - name: Terraform Apply
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    run: terraform apply -auto-approve tfplan
