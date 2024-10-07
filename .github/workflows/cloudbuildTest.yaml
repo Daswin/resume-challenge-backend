@@ -1,8 +1,8 @@
 steps:
-  - name: Terraform Init
+  - name: 'Terraform Init'
     args: ['terraform init']
     
-  - name: Terraform Plan
+  - name: 'Terraform Plan'
     args: ['terraform plan -out=tfplan']
 
   
