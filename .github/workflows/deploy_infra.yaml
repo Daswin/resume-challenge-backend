@@ -48,11 +48,4 @@ jobs:
         cd infra 
         terraform apply --auto-approve
       if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
-    - name: Terraform destroy
-      env:
-        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
-        TF_VAR_region: ${{ secrets.GCP_REGION }}
-      run: |
-        cd infra
-        terraform destroy --auto-approve
-      if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
+    
