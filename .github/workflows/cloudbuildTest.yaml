@@ -11,6 +11,7 @@ steps:
     args: 
     - '-c'
     - |
+      cd Infra
       terraform plan
 
   
