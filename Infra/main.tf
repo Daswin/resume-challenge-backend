@@ -25,7 +25,7 @@ resource "google_storage_bucket" "terraformars_1958" {
 }
 
 # test terraform git cloud build with bucket creation
-resource "google_storage_bucket" "terraformars_1958" {
+resource "google_storage_bucket" "terraformars_1958_trial" {
   name  = "project-dev-cloudresumechallenge2024-trial"
   location = var.region
   force_destroy = true
