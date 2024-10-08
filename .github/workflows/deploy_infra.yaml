@@ -1,0 +1,58 @@
+name: Deploy to Google Cloud
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_operation:
+        description: "Terraform operation: plan, apply, destroy"
+        required: true
+        default: "plan"
+        type: choice
+        options:
+          - plan
+          - apply
+          - destroy
+jobs:
+ deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3.0.0
+    
+    - id: "auth"
+      name: "Authenticate to Google Cloud"
+      uses: "google-github-actions/auth@v1"
+      with:
+        credentials_json: "${{ secrets.GCP_SA_KEY }}"
+        create_credentials_file: true
+        export_environment_variables: true
+        
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+    - name: Terraform init
+      run : |
+        cd infra 
+        terraform init
+    
+    - name : Terraform Plan
+      env:
+        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+        TF_VAR_region: ${{ secrets.GCP_REGION }}
+      run: |
+        cd infra
+        terraform plan
+      if: "${{ github.event.inputs.terraform_operation == 'plan' }}"
+    - name: Terraform apply
+      env:
+        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+        TF_VAR_region: ${{ secrets.GCP_REGION }}
+      run: |
+        cd infra 
+        terraform apply --auto-approve
+      if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
+    - name: Terraform destroy
+      env:
+        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+        TF_VAR_region: ${{ secrets.GCP_REGION }}
+      run: |
+        cd infra
+        terraform destroy --auto-approve
+      if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
