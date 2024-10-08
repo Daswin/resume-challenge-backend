@@ -64,7 +64,7 @@ resource "google_storage_bucket_object" "jsUpload" {
 data "archive_file" "default" {
   type        = "zip"
   output_path = "/tmp/cloud-function-code.zip"
-  source_dir  = "C:/Users/daswi/Documents/Certifications/Professional Data Engineer/Projects/Resume Challenge GCP/Cloud_function_code/"
+  source_dir  = "RESUME-CHALLENGE-BACKEND/Cloud_function_code/"
 }
 # Add to bucket
 resource "google_storage_bucket_object" "object" {
