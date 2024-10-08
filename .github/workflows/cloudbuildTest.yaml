@@ -14,5 +14,8 @@ steps:
     - |
       cd Infra
       terraform plan
+      
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
   
