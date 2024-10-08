@@ -1,11 +1,4 @@
 steps:
-  - name: "Authenticate to Google Cloud"
-    uses: "google-github-actions/auth@v1"
-    with:
-      credentials_json: "${{ secrets.GCP_SA_KEY }}"
-      create_credentials_file: true
-      export_environment_variables: true
-      
   - name: 'hashicorp/terraform:1.0.0' 
     entrypoint: 'sh'
     args: 
