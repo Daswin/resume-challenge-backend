@@ -1,9 +1,9 @@
 import functions_framework
 import firebase_admin
 from firebase_admin import credentials, firestore
-keyPath = "my-terraform-project-14102-3970879e2b69.json"
-cred = credentials.Certificate(keyPath)
-firebase_admin.initialize_app(cred)
+# keyPath = "my-terraform-project-14102-3970879e2b69.json"
+# cred = credentials.Certificate(keyPath)
+# firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 import json
