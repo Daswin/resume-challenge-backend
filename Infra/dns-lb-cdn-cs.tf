@@ -27,23 +27,23 @@ resource "google_dns_record_set" "ip" {
   rrdatas      = [google_compute_global_address.ip.address]
 }
 
-# # Add the IP to the DNS
-# resource "google_dns_record_set" "www_ip" {
-#   name         = "www.resume-challenge-sinclair.com."
-#   type         = "A"
-#   ttl          = 300
-#   managed_zone = google_dns_managed_zone.terraformtestdns.name
-#   rrdatas      = [google_compute_global_address.ip.address]
-# }
+# Add the IP to the DNS
+resource "google_dns_record_set" "www_ip" {
+  name         = "www.resume-challenge-sinclair.com."
+  type         = "A"
+  ttl          = 300
+  managed_zone = google_dns_managed_zone.terraformtestdns.name
+  rrdatas      = [google_compute_global_address.ip.address]
+}
 
-# # Add the IP to the DNS
-# resource "google_dns_record_set" "at_ip" {
-#   name         = "@.resume-challenge-sinclair.com."
-#   type         = "A"
-#   ttl          = 300
-#   managed_zone = google_dns_managed_zone.terraformtestdns.name
-#   rrdatas      = [google_compute_global_address.ip.address]
-# }
+# Add the IP to the DNS
+resource "google_dns_record_set" "at_ip" {
+  name         = "@.resume-challenge-sinclair.com."
+  type         = "A"
+  ttl          = 300
+  managed_zone = google_dns_managed_zone.terraformtestdns.name
+  rrdatas      = [google_compute_global_address.ip.address]
+}
 
 
 #Create a load balancer and enable CDN
