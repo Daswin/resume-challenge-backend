@@ -24,17 +24,6 @@ resource "google_storage_bucket" "terraformars_1958" {
 
 }
 
-# test terraform git cloud build with bucket creation
-resource "google_storage_bucket" "terraformars_1958_trial" {
-  name  = "project-dev-cloudresumechallenge2024-trial"
-  location = var.region
-  force_destroy = true
-  storage_class = "STANDARD" # Optional: Use STANDARD class for regional storage
-  # Optional settings for the bucket
-  uniform_bucket_level_access = true   # Enforce uniform access to the bucket (recommended for public access)
-
-}
-
 # Set the IAM policy to make the bucket publicly accessible
 resource "google_storage_bucket_iam_member" "public_access" {
   bucket = google_storage_bucket.terraformars_1958.id
@@ -42,6 +31,8 @@ resource "google_storage_bucket_iam_member" "public_access" {
   member = "allUsers"                    # This makes the bucket publicly accessible
 }
 
+
+# ***********FILES UPLOAD MOVED TO FRONT END REPOSITORY********************
 # resource "google_storage_bucket_object" "htmlUpload" {
 #   bucket = google_storage_bucket.terraformars_1958.id
 #   name = "Resume.html"
